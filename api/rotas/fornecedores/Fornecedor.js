@@ -3,7 +3,15 @@ const CampoInvalido = require('../../erros/CampoInvalido')
 const DadosNaoFornecidos = require('../../erros/DadosNaoFornecidos')
 
 class Fornecedor {
-  constructor ({ id, empresa, email, categoria, dataCriacao, dataAtualizacao, versao }) {
+  constructor ({
+    id,
+    empresa,
+    email,
+    categoria,
+    dataCriacao,
+    dataAtualizacao,
+    versao
+  }) {
     this.id = id
     this.empresa = empresa
     this.email = email
@@ -64,12 +72,13 @@ class Fornecedor {
   validar () {
     const campos = ['empresa', 'email', 'categoria']
 
-    campos.forEach(campo => {
+    campos.forEach((campo) => {
       const valor = this[campo]
 
       if (typeof valor !== 'string' || valor.length === 0) {
         throw new CampoInvalido(campo)
       }
+      return true
     })
   }
 }
